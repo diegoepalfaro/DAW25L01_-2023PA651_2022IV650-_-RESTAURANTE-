@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using L01_2023PA651_2022IV650.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace L01_2023PA651_2022IV650.Controllers
 {
@@ -36,6 +37,22 @@ namespace L01_2023PA651_2022IV650.Controllers
             }
             return Ok(listadoclientes);
         }
+
+        [HttpGet]
+        [Route("GetById/{direccion}")]
+        public IActionResult Get(string direccion)
+        {
+            List<clientes> listadoclientes = (from e in _RestauranteContexto.clientes                                                                     
+                                    where e.direccion.Contains(direccion)
+                                    select e).ToList();
+
+            if (listadoclientes == null)
+            {
+                return NotFound();
+            }
+            return Ok(listadoclientes);
+        }
+
 
         [HttpPost]
         [Route("Add")]

@@ -15,6 +15,6 @@ namespace L01_2023PA651_2022IV650.Models
         public DbSet<clientes> clientes { get; set; }
         public DbSet<platos> platos { get; set; }
 
-        public DbSet<Motorista> Motorista { get; set; }
+        public DbSet<motoristas> motoristas { get; set; }
     }
 }

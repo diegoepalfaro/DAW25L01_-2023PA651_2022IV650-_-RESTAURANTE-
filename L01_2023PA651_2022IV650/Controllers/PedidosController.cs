@@ -38,6 +38,60 @@ namespace L01_2023PA651_2022IV650.Controllers
             return Ok(listadopedidos);
         }
 
+        [HttpGet]
+        [Route("GetById/{cliente}")]
+        public IActionResult Get(string cliente)
+        {
+            var listadopedidos = (from e in _RestauranteContexto.pedidos
+                                                    join a in _RestauranteContexto.clientes
+                                                        on e.clienteId equals a.clienteId
+                                              where a.nombreCliente.Contains(cliente)
+                                              select new
+                                              {
+                                                  e.pedidoId,
+                                                  e.motoristaId,
+                                                  e.clienteId,
+                                                  Cliente= a.nombreCliente,
+                                                  e.platoId,
+                                                  e.cantidad,
+                                                  e.precio
+
+                                              }).ToList();
+
+            if (listadopedidos == null)
+            {
+                return NotFound();
+            }
+            return Ok(listadopedidos);
+        }
+
+        [HttpGet]
+        [Route("GetByMotorista/{motorista}")]
+        public IActionResult Get2(string motorista)
+        {
+            var listadopedidos = (from e in _RestauranteContexto.pedidos
+                                  join a in _RestauranteContexto.motoristas
+                                      on e.motoristaId equals a.motoristaId
+                                  where a.nombreMotorista.Contains(motorista)
+                                  select new
+                                  {
+                                      e.pedidoId,
+                                      e.motoristaId,
+                                      e.clienteId,
+                                      Motorista = a.nombreMotorista,
+                                      e.platoId,
+                                      e.cantidad,
+                                      e.precio
+
+                                  }).ToList();
+
+            if (listadopedidos == null)
+            {
+                return NotFound();
+            }
+            return Ok(listadopedidos);
+        }
+
         [HttpPost]
         [Route("Add")]
         public IActionResult GuardarPedido([FromBody] pedidos pedido)

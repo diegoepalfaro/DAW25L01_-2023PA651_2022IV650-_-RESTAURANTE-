@@ -18,7 +18,7 @@ namespace L01_2023PA651_2022IV650.Controllers
         }
 
         ///<sumary>
-        ///Endpoint que retorna el listado de todos los clientes existentes
+        ///Endpoint que retorna el listado de todos los platos existentes
         ///</sumary>
         ///<returns></returns>
         [HttpGet]
@@ -36,6 +36,22 @@ namespace L01_2023PA651_2022IV650.Controllers
             }
             return Ok(listadoplatos);
         }
+
+        [HttpGet]
+        [Route("GetById/{nombre}")]
+        public IActionResult Get(string nombre)
+        {
+            var listadopedidos = (from e in _RestauranteContexto.platos                                 
+                                    where e.nombrePlato.Contains(nombre)
+                                  select e).ToList();
+
+            if (listadopedidos == null)
+            {
+                return NotFound();
+            }
+            return Ok(listadopedidos);
+        }
+
 
         [HttpPost]
         [Route("Add")]
