@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace L01_2023PA651_2022IV650.Models
 {
-    public class Plato
+    public class platos
     {
         [Key] 
-        public int PlatoId { get; set; }
+        public int platoId { get; set; }
 
-        public string NombrePlato { get; set; }
+        public string nombrePlato { get; set; }
 
-        public decimal Precio { get; set; }
+        public decimal precio { get; set; }
     }
 }
