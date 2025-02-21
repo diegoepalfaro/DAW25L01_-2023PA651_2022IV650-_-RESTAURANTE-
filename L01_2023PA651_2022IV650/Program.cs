@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar la configuración de la base de datos
-builder.Services.AddDbContext<RestauranteContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 builder.Services.AddControllers();
+
+//Inyección
+builder.Services.AddDbContext<RestauranteContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("restauranteDbConnection"))
+     );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

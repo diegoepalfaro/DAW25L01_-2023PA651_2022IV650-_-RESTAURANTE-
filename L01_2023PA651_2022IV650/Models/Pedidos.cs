@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace L01_2023PA651_2022IV650.Models
 {
-    public class Pedidos
+    public class pedidos
     {
         [Key]
 
@@ -15,7 +15,7 @@ namespace L01_2023PA651_2022IV650.Models
 
         public int cantidad {  get; set; }
 
-        public float precio { get; set; }
+        public decimal precio { get; set; }
 
     }
 }
