@@ -5,8 +5,8 @@ namespace L01_2023PA651_2022IV650.Models
     public class Motorista
     {
         [Key] 
-        public int MotoristaId { get; set; }
+        public int motoristaId { get; set; }
 
-        public string NombreMotorista { get; set; }
+        public string mombreMotorista { get; set; }
     }
 }
