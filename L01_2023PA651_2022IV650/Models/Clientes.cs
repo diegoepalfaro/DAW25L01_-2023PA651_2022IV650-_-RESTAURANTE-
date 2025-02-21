@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace L01_2023PA651_2022IV650.Models
 {
-    public class Clientes
+    public class clientes
     {
         [Key]
         public int clienteId { get; set; }

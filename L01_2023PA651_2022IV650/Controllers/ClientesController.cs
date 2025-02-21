@@ -27,7 +27,7 @@ namespace L01_2023PA651_2022IV650.Controllers
         public IActionResult Get()
         {
 
-            List<Clientes> listadoLibros = (from e in _RestauranteContexto.Clientes
+            List<clientes> listadoLibros = (from e in _RestauranteContexto.clientes
                                             select e).ToList();
 
             if (listadoLibros.Count() == 0)
